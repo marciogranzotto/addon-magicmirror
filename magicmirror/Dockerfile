@@ -1,9 +1,9 @@
-ARG BUILD_FROM=hassioaddons/base:7.0.2
+ARG BUILD_FROM=hassioaddons/base:8.0.1
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
 # Set ENV
-ENV MM_VERSION="v2.10.1" \
+ENV MM_VERSION="v2.12.0" \
     MMM_HASS='7d0063b0bdfffc9b8d4c751fb31dc0ea0f4e39e4'
 
 # Set shell
@@ -16,15 +16,13 @@ WORKDIR /opt
 # hadolint ignore=DL3003
 RUN \
   apk add --no-cache \
-      git=2.24.1-r0 \
+      git=2.26.2-r0 \
       lua-resty-http=0.15-r0 \
-      nginx-mod-http-lua=1.16.1-r6 \
-      nginx=1.16.1-r6 \
-      nodejs=12.15.0-r1 \
-      npm=12.15.0-r1 \
-      paxctl=0.9-r0 \
+      nginx-mod-http-lua=1.18.0-r0 \
+      nginx=1.18.0-r0 \
+      nodejs=12.18.3-r0 \
+      npm=12.18.3-r0 \
   \
-  && paxctl -cm "$(command -v node)" \
   && npm config set unsafe-perm true \
   \
   && npm install -g modclean@3.0.0-beta.1 \
